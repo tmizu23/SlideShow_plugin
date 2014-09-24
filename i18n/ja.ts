@@ -47,7 +47,7 @@
         &lt;li&gt;[Add Slide] button, the map will be added to the slide list&lt;/li&gt;
         &lt;li&gt;[Slide List] button, you can edit the slide setting or order by hand &lt;/li&gt;
         &lt;li&gt;[SlideShow] button, the slideshow will be start&lt;/li&gt;
-        &lt;li&gt;Push the key.&lt;br/&gt;[ . ]  forward&lt;br&gt;[ , ]  back&lt;br/&gt;[ esc ]  stop &lt;br/&gt;[ 0-9 ]  jump&lt;/li&gt;
+        &lt;li&gt;Push the key.&lt;br/&gt;[ . ]  forward&lt;br&gt;[ , ]  back&lt;br/&gt;[ esc ]  stop &lt;br/&gt;[ 1-9 ]  jump&lt;/li&gt;
         &lt;/ol&gt;
         </source>
         <translation type="unfinished">
@@ -58,7 +58,7 @@
         &lt;li&gt;[ ＋ スライドを追加 ] を押すと、表示状態がスライドリストとして追加されます。&lt;/li&gt;
         &lt;li&gt;[ ❏ スライドリスト ] を押すと、リストファイルが開きスライドの順番や設定を手動で変更できます。&lt;/li&gt;
         &lt;li&gt;[ ▶ スライドショー ] を押すと、スライドショーが始まります。&lt;/li&gt;
-        &lt;li&gt;キーボードでスライドを操作します。&lt;br/&gt;[ . ]  進む&lt;br&gt;[ , ]  戻る&lt;br/&gt;[ esc ]  終了 &lt;br/&gt;[ 0-9 ]  番号のスライドにジャンプ&lt;/li&gt;
+        &lt;li&gt;キーボードでスライドを操作します。&lt;br/&gt;[ . ]  進む&lt;br&gt;[ , ]  戻る&lt;br/&gt;[ esc ]  終了 &lt;br/&gt;[ 1-9 ]  番号のスライドにジャンプ&lt;/li&gt;
         &lt;/ol&gt;
         </translation>
     </message>

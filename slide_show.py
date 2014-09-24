@@ -41,6 +41,7 @@ class SlideKeyEvent(QgsMapTool):
         self.iface = iface
 
     def setSlide(self):
+        global slidenum,slidepos,slidelayer
         try: 
            legend = self.iface.legendInterface()
            for layer in legend.layers():
@@ -57,7 +58,7 @@ class SlideKeyEvent(QgsMapTool):
            pass
            
     def keyPressEvent(self, event):
-        global slidenum
+        global slidenum,slidepos,slidelayer
         #QMessageBox.information(None, "DEBUG:", str(slidenum))
         if event.key() == Qt.Key_Escape:
            for obj in objs:
@@ -244,13 +245,15 @@ class SlideShow:
            
        
     def play(self):
-        global slidenum
+        global slidenum,slidepos,slidelayer
+        slidepos=[]
+        slidelayer=[]
         if not os.path.exists(self.slidelist):
            QMessageBox.information(None, "Information:", self.tr(u"No Slide."))
            return
-        f = open(self.slidelist, 'rU')
+        f = open(self.slidelist, 'r')
         for r in f:
-           d = r.strip().rstrip("\r\n").split(',')
+           d = r.strip().replace(('\r' or '\n'),'').split(',')
            if d[0]!="":
               slidepos.append(QgsRectangle(float(d[0]),float(d[1]),float(d[2]),float(d[3])))
               slidelayer.append(d[4:])
