@@ -98,7 +98,7 @@ class SlideShow:
         locale_path = os.path.join(
             self.plugin_dir,
             'i18n',
-            'SlideShow_{}.qm'.format(locale))
+            '{}.qm'.format(locale))
 
         if os.path.exists(locale_path):
             self.translator = QTranslator()
@@ -210,7 +210,7 @@ class SlideShow:
     def info(self):
         html =self.tr(u"""
         <h1>SlideShow</h1>
-        <h2>How to use</h2>
+        <h2>Usage</h2>
         <ol>
         <li>Set the area and layer</li> 
         <li>[Add Slide] button, the map will be added to the slide</li>
