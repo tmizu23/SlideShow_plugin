@@ -3,8 +3,8 @@ SlideShow_plugin
 
 This is SlideShow plugin for QGIS
 
-Add http://map.ecoris.co.jp/plugins.xml to the QGIS Plugin Setting.
-And install "SlideShow" plugin
+Add http://map.ecoris.co.jp/plugins.xml to the QGIS Plugin Setting.  
+Install "SlideShow" plugin
 
 #Usage
 
