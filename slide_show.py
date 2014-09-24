@@ -226,7 +226,7 @@ class SlideShow:
            QMessageBox.information(None, "Information:", self.tr(u"No Slide."))
            return
         if sys.platform == "win32":
-           os.playfile(self.slidelist)
+           os.startfile(self.slidelist)
         subprocess.call(["open",self.slidelist])
         
     def add(self):
