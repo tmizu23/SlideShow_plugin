@@ -9,7 +9,7 @@
 [general]
 name=Slide Show
 qgisMinimumVersion=2.4
-description=This Plugin is SlideShow
+description=This is SlideShow Plugin
 version=0.1
 author=Takayuki Mizutani
 email=mizutani.takayuki+slideshow@gmai.com
@@ -27,7 +27,7 @@ tags=
 homepage=
 tracker=
 repository=
-icon=icon.png
+icon=play.png
 # experimental flag
 experimental=False
 
