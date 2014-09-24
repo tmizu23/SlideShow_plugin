@@ -43,8 +43,8 @@
         &lt;h1&gt;SlideShow&lt;/h1&gt;
         &lt;h2&gt;Usage&lt;/h2&gt;
         &lt;ol&gt;
-        &lt;li&gt;Set the area and layer&lt;/li&gt; 
-        &lt;li&gt;[Add Slide] button, the map will be added to the slide&lt;/li&gt;
+        &lt;li&gt;Display the layer for the slide&lt;/li&gt; 
+        &lt;li&gt;[Add Slide] button, the map will be added to the slide list&lt;/li&gt;
         &lt;li&gt;[Slide List] button, you can edit the slide setting or order by hand &lt;/li&gt;
         &lt;li&gt;[SlideShow] button, the slideshow will be start&lt;/li&gt;
         &lt;li&gt;Push the key.&lt;br/&gt;[ . ]  forward&lt;br&gt;[ , ]  back&lt;br/&gt;[ esc ]  stop &lt;br/&gt;[ 0-9 ]  jump&lt;/li&gt;

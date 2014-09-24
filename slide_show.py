@@ -212,8 +212,8 @@ class SlideShow:
         <h1>SlideShow</h1>
         <h2>Usage</h2>
         <ol>
-        <li>Set the area and layer</li> 
-        <li>[Add Slide] button, the map will be added to the slide</li>
+        <li>Display the layer for the slide</li> 
+        <li>[Add Slide] button, the map will be added to the slide list</li>
         <li>[Slide List] button, you can edit the slide setting or order by hand </li>
         <li>[SlideShow] button, the slideshow will be start</li>
         <li>Push the key.<br/>[ . ]  forward<br>[ , ]  back<br/>[ esc ]  stop <br/>[ 0-9 ]  jump</li>
