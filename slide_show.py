@@ -227,7 +227,8 @@ class SlideShow:
            return
         if sys.platform == "win32":
            os.startfile(self.slidelist)
-        subprocess.call(["open",self.slidelist])
+        else:
+           subprocess.call(["open",self.slidelist])
         
     def add(self):
         reply = QMessageBox.question(None, "Message:", self.tr(u"Do you want to add to the slide this map ?"),QMessageBox.Yes,QMessageBox.No)
@@ -237,7 +238,7 @@ class SlideShow:
            area =[str(rect.xMinimum()),str(rect.yMinimum()),str(rect.xMaximum()),str(rect.yMaximum())]
            allLayers = self.iface.mapCanvas().layers()
            l = [i.originalName().encode('utf-8') for i in allLayers]
-           f.write(','.join(area) + "," + ','.join(l) + "\n")
+           f.write(','.join(area) + "," + ','.join(l) + "\r\n")
            f.flush()
            f.close()
            
@@ -247,9 +248,9 @@ class SlideShow:
         if not os.path.exists(self.slidelist):
            QMessageBox.information(None, "Information:", self.tr(u"No Slide."))
            return
-        f = open(self.slidelist, 'r')
+        f = open(self.slidelist, 'rU')
         for r in f:
-           d = r.strip().rstrip("\n").split(',')
+           d = r.strip().rstrip("\r\n").split(',')
            if d[0]!="":
               slidepos.append(QgsRectangle(float(d[0]),float(d[1]),float(d[2]),float(d[3])))
               slidelayer.append(d[4:])
