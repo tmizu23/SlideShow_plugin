@@ -25,7 +25,7 @@ from PyQt4.QtGui import QAction, QIcon, QMessageBox, QToolBar, QDockWidget
 # Initialize Qt resources from file resources.py
 import resources_rc 
 
-import os.path,sys,subprocess
+import os.path,sys,subprocess,codecs
 from qgis.core import *
 from qgis.gui import QgsMapTool
 
@@ -36,9 +36,10 @@ slidenum = 0
 
 class SlideKeyEvent(QgsMapTool):   
     def __init__(self, canvas,iface):
-        QgsMapTool.__init__(self, canvas)
         self.canvas = canvas
         self.iface = iface
+        QgsMapTool.__init__(self, canvas)
+        
 
     def setSlide(self):
         global slidenum,slidepos,slidelayer
@@ -46,9 +47,11 @@ class SlideKeyEvent(QgsMapTool):
            legend = self.iface.legendInterface()
            for layer in legend.layers():
               legend.setLayerVisible(layer, False)
+              #QMessageBox.information(None, "DEBUG:", layer.name())
            for l in slidelayer[slidenum]:   
               for layer in legend.layers():
-                 layerName = layer.originalName()
+                 layerName = layer.name()
+                 #QMessageBox.information(None, "DEBUG:", layerName)
                  if layerName == l:
                     legend.setLayerVisible(layer, True)
                     break
@@ -59,6 +62,7 @@ class SlideKeyEvent(QgsMapTool):
            
     def keyPressEvent(self, event):
         global slidenum,slidepos,slidelayer
+        
         #QMessageBox.information(None, "DEBUG:", str(slidenum))
         if event.key() == Qt.Key_Escape:
            for obj in objs:
@@ -68,8 +72,7 @@ class SlideKeyEvent(QgsMapTool):
            self.iface.mainWindow().showMaximized()
            self.canvas.unsetMapTool(self)           
            return
-           
-        if event.key() == 44:
+        elif event.key() == 44:
            slidenum=slidenum-1
            if slidenum < 0: slidenum=len(slidepos)-1 
         elif event.key() == 46:
@@ -217,7 +220,7 @@ class SlideShow:
         <li>[Add Slide] button, the map will be added to the slide list</li>
         <li>[Slide List] button, you can edit the slide setting or order by hand </li>
         <li>[SlideShow] button, the slideshow will be start</li>
-        <li>Push the key.<br/>[ . ]  forward<br>[ , ]  back<br/>[ esc ]  stop <br/>[ 0-9 ]  jump</li>
+        <li>Push the key.<br/>[ . ]  forward<br>[ , ]  back<br/>[ esc ]  stop <br/>[ 1-9 ]  jump</li>
         </ol>
         """)
         QMessageBox.information(None, "Information:", html)
@@ -234,12 +237,13 @@ class SlideShow:
     def add(self):
         reply = QMessageBox.question(None, "Message:", self.tr(u"Do you want to add to the slide this map ?"),QMessageBox.Yes,QMessageBox.No)
         if reply == QMessageBox.Yes:
-           f = open(self.slidelist, 'a+')
+           f = open(self.slidelist, 'a')
            rect = self.iface.mapCanvas().extent()
-           area =[str(rect.xMinimum()),str(rect.yMinimum()),str(rect.xMaximum()),str(rect.yMaximum())]
+           area =[rect.xMinimum(),rect.yMinimum(),rect.xMaximum(),rect.yMaximum()]
            allLayers = self.iface.mapCanvas().layers()
-           l = [i.originalName().encode('utf-8') for i in allLayers]
-           f.write(','.join(area) + "," + ','.join(l) + "\r\n")
+           a = [str(i) for i in area]
+           l = [i.name().encode('utf-8') for i in allLayers]
+           f.write(','.join(a) + "," + ','.join(l) + "\r\n")
            f.flush()
            f.close()
            
@@ -251,9 +255,10 @@ class SlideShow:
         if not os.path.exists(self.slidelist):
            QMessageBox.information(None, "Information:", self.tr(u"No Slide."))
            return
-        f = open(self.slidelist, 'r')
+        f = codecs.open(self.slidelist, 'r','utf-8-sig')
         for r in f:
-           d = r.strip().replace(('\r' or '\n'),'').split(',')
+           
+           d = r.replace(('\r'or'\n'),'').strip().split(',')
            if d[0]!="":
               slidepos.append(QgsRectangle(float(d[0]),float(d[1]),float(d[2]),float(d[3])))
               slidelayer.append(d[4:])
