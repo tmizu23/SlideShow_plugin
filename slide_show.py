@@ -200,6 +200,7 @@ class SlideShow:
             text=self.tr(u'Information'),
             callback=self.info,
             parent=self.iface.mainWindow())
+        
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
@@ -259,7 +260,7 @@ class SlideShow:
         for r in f:
            
            d = r.replace(('\r'or'\n'),'').strip().split(',')
-           if d[0]!="":
+           if d[0]!="" and not d[0].startswith('#'):
               slidepos.append(QgsRectangle(float(d[0]),float(d[1]),float(d[2]),float(d[3])))
               slidelayer.append(d[4:])
         f.close()
